@@ -22,11 +22,19 @@ class MainActivity : AppCompatActivity() {
         modifyLayout(config)
     }
 
+    /**
+     * this function is to find a configuration of my phone
+     * @param newConfig: configuration of the application
+     */
     override fun onConfigurationChanged(newConfig: Configuration){
         super.onConfigurationChanged(newConfig)
         modifyLayout(newConfig)
     }
 
+    /**
+     * this function is what figures out the orientation of my application
+     * @param newConfig: the configuration of the application
+     */
     private fun modifyLayout(newConfig: Configuration){
         if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
             setContentView(R.layout.activity_main2)
@@ -34,10 +42,19 @@ class MainActivity : AppCompatActivity() {
             setContentView(R.layout.activity_main)
     }
 
+    /**
+     * change the screen to the attack screen when the user presses the attack button
+     */
     fun attackScreen(view: View){
         setContentView(R.layout.attack_screen)
     }
 
+    /**
+     * This function figures out what players turn it is
+     * It then uses the inputed attack and defense to calculate the attack on that player
+     * if positive remove health from player
+     * @param view: view that is passed in
+     */
     fun attack1(view: android.view.View) {
         if(findViewById<TextView>(R.id.txtPlayerTurn).text.toString().equals("Player 1 Turn")) {
             findViewById<TextView>(R.id.txtPlayer2Health).text =
@@ -58,10 +75,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    /**
+     * helper function to calculate attack
+     * if positive return that
+     * if negative return 0
+     * @param health: player health
+     * @param attack: attack monster points
+     * @param defense: defense monster points
+     * @return the amount of points to take away
+     */
     fun attackFun(health: Int, attack: Int, defense: Int): Int{
-        return health - (attack - defense)
+        if(attack - defense > 0) {
+            return health - (attack - defense)
+        }
+        return 0
     }
 
+    /**
+     * change the player turn
+     * @param view: the view that is passed in
+     */
     fun nextTurn(view: android.view.View) {
         if(findViewById<TextView>(R.id.txtPlayerTurn).text.toString().equals(player1Turn)) {
             findViewById<TextView>(R.id.txtPlayerTurn).text = player2Turn
@@ -70,6 +103,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * create a new game by changing player health back to 8000
+     * @param view: the view that is passed in
+     */
     fun newGame(view: android.view.View) {
         findViewById<TextView>(R.id.txtPlayer1Health).setText("8000")
         findViewById<TextView>(R.id.txtPlayer2Health).setText("8000")
