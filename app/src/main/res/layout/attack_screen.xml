@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:orientation="vertical"
+    tools:ignore="HardCodedText">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top">
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <TextView
+                android:id="@+id/txtAttackPower"
+                android:layout_height="45dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="Attack Power"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etAttackPower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:inputType="number"
+                android:imeOptions="actionNext"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <TextView
+                android:id="@+id/txtDefensePower"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="Defense Power"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/etDefensePower"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAttackPower" />
+
+            <EditText
+                android:id="@+id/etDefensePower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAttackPower"
+                android:inputType="number"
+                android:imeOptions="actionNext"/>
+        </TableRow>
+
+        <Button
+            android:id="@+id/btnFinishAttack"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:text="Attack"
+            tools:layout_editor_absoluteX="151dp"
+            android:onClick="attack1"/>
+    </TableLayout>
+
+</LinearLayout>
